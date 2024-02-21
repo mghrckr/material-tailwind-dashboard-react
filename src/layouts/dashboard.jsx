@@ -13,14 +13,15 @@ import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } = controller;
-
+  let imgUrl = '/img/logoWebMarkaz.png'
   return (
     <div className="min-h-screen bg-blue-gray-50/50">
       <Sidenav
         routes={routes}
-        brandImg={
-          sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
-        }
+        // brandImg={
+        //   sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
+        // }
+        brandImg={imgUrl}
       />
       <div className="p-4 xl:ml-80">
         <DashboardNavbar />

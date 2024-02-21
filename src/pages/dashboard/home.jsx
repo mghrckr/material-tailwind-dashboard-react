@@ -26,16 +26,45 @@ import {
   ordersOverviewData,
 } from "@/data";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchUsers } from "@/store/actionCreators";
+
 
 export function Home() {
+  // const dispatch = useDispatch();
+  // const users = useSelector((state) => state.users.users);
+  // console.log(users);
+
+  // useEffect(() => {
+  //   dispatch(fetchUsers);
+  // }, [dispatch]);
+
   return (
     <div className="mt-12">
+      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 shadow-md sm:rounded-lg" style={{ backgroundColor: 'white', minHeight: '160px' }}>
+        <div>
+          <h1 className="ml-4 mt-2" style={{ fontWeight: 'bold', fontFamily: 'revert', fontSize: 25 }}>
+            GOOD MORNING, AGUNG !
+          </h1>
+          <Typography
+            variant="small"
+            className="flex items-center font-normal text-blue-gray-600 ml-4"
+          >
+            19 FEBRUARI 2024
+          </Typography>
+        </div>
+        <div style={{ display: 'flex' }}>
+          <img src='https://png.pngtree.com/png-clipart/20220424/original/pngtree-business-woman-cartoon-or-a-clerk-working-at-office-desk-with-png-image_7553022.png' alt="Your Image"
+            style={{ maxHeight: '160px', marginLeft: 'auto' }}
+          />
+        </div>
+      </div>
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
         {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
           <StatisticsCard
             key={title}
             {...rest}
-            title={title}
+            title={<strong>{title}</strong>}
             icon={React.createElement(icon, {
               className: "w-6 h-6 text-white",
             })}
@@ -75,14 +104,14 @@ export function Home() {
           >
             <div>
               <Typography variant="h6" color="blue-gray" className="mb-1">
-                Projects
+                Member Aktif
               </Typography>
               <Typography
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
                 <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
-                <strong>30 done</strong> this month
+                <strong>Bulan ini :</strong> 3
               </Typography>
             </div>
             <Menu placement="left-start">
@@ -106,7 +135,7 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["companies", "members", "budget", "completion"].map(
+                  {["Member", "Jumlah Laba","Jumlah Transaksi", "Jumlah Bakaran", "completion"].map(
                     (el) => (
                       <th
                         key={el}
@@ -126,11 +155,10 @@ export function Home() {
               <tbody>
                 {projectsTableData.map(
                   ({ img, name, members, budget, completion }, key) => {
-                    const className = `py-3 px-5 ${
-                      key === projectsTableData.length - 1
-                        ? ""
-                        : "border-b border-blue-gray-50"
-                    }`;
+                    const className = `py-3 px-5 ${key === projectsTableData.length - 1
+                      ? ""
+                      : "border-b border-blue-gray-50"
+                      }`;
 
                     return (
                       <tr key={name}>
@@ -147,19 +175,7 @@ export function Home() {
                           </div>
                         </td>
                         <td className={className}>
-                          {members.map(({ img, name }, key) => (
-                            <Tooltip key={name} content={name}>
-                              <Avatar
-                                src={img}
-                                alt={name}
-                                size="xs"
-                                variant="circular"
-                                className={`cursor-pointer border-2 border-white ${
-                                  key === 0 ? "" : "-ml-2.5"
-                                }`}
-                              />
-                            </Tooltip>
-                          ))}
+                          {members}
                         </td>
                         <td className={className}>
                           <Typography
@@ -167,6 +183,14 @@ export function Home() {
                             className="text-xs font-medium text-blue-gray-600"
                           >
                             {budget}
+                          </Typography>
+                        </td>
+                        <td className={className}>
+                          <Typography
+                            variant="small"
+                            className="text-xs font-medium text-blue-gray-600"
+                          >
+                            {members}
                           </Typography>
                         </td>
                         <td className={className}>
@@ -201,7 +225,7 @@ export function Home() {
             className="m-0 p-6"
           >
             <Typography variant="h6" color="blue-gray" className="mb-2">
-              Orders Overview
+              Produk Terlaris
             </Typography>
             <Typography
               variant="small"
@@ -219,11 +243,10 @@ export function Home() {
               ({ icon, color, title, description }, key) => (
                 <div key={title} className="flex items-start gap-4 py-3">
                   <div
-                    className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
-                      key === ordersOverviewData.length - 1
-                        ? "after:h-0"
-                        : "after:h-4/6"
-                    }`}
+                    className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${key === ordersOverviewData.length - 1
+                      ? "after:h-0"
+                      : "after:h-4/6"
+                      }`}
                   >
                     {React.createElement(icon, {
                       className: `!w-5 !h-5 ${color}`,

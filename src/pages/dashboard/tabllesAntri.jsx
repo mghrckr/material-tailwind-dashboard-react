@@ -17,7 +17,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from "react-router-dom"
 import Dropdown from "@/components/Dropdown";
 
-export function Tables() {
+export function TablesAntri() {
   const dispatch = useDispatch();
   let navigate = useNavigate()
   let [startDate, setStartDate] = useState('');
@@ -52,47 +52,11 @@ export function Tables() {
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            INBOX
+            ANTRI
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-          {/*tanggal */}
-          <div style={{ marginTop: '5px', marginBottom: '5px' }}>
-            <label htmlFor="startDate">Start Date:</label>
-            <input
-              style={{ marginLeft: '14px', marginBottom: '10px' }}
-              type="date"
-              id="startDate"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="shadow border rounded-lg px-2 py-1"
-            />
-          </div>
 
-          <div style={{ marginTop: '5px', marginBottom: '5px' }}>
-            <label htmlFor="endDate">End Date:</label>
-            <input
-              style={{ marginLeft: '20px' }}
-              type="date"
-              id="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className="shadow border rounded-lg px-2 py-1"
-            />
-          </div>
-          <button
-
-            onClick={handleSubmit}
-            className="shadow-lg shadow-black-800/80 rounded-lg gradient text-white px-4 py-2 text-sm rounded font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate"
-            aria-label="Submit"
-            title="Submit"
-            style={{ backgroundColor: 'black', marginBottom: '8px' }}
-            disabled={submitLoading}
-          >
-            {submitLoading ? 'Loading...' : 'SUBMIT'}
-          </button>
-
-          {/*tanggal */}
 
           {/* <div className="py-20 h-screen bg-gray-300 px-2"> */}
           <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
@@ -113,11 +77,45 @@ export function Tables() {
             </div>
           </div>
           {/* </div> */}
-          <Dropdown />
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button
+
+              onClick={handleSubmit}
+              className="shadow-lg shadow-black-800/80 rounded-lg gradient text-white px-4 py-2 text-sm rounded font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate"
+              aria-label="Submit"
+              title="Submit"
+              style={{ backgroundColor: 'orange', marginBottom: '8px' }}
+              disabled={submitLoading}
+            >
+              RESEND
+            </button>
+            <button
+
+              onClick={handleSubmit}
+              className="shadow-lg shadow-black-800/80 rounded-lg gradient text-white px-4 py-2 text-sm rounded font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate"
+              aria-label="Submit"
+              title="Submit"
+              style={{ backgroundColor: 'blue', marginBottom: '8px', marginLeft: '8px' }}
+              disabled={submitLoading}
+            >
+              MARK AS SENT
+            </button>
+            <button
+
+              onClick={handleSubmit}
+              className="shadow-lg shadow-black-800/80 rounded-lg gradient text-white px-4 py-2 text-sm rounded font-medium focus:ring ring-black ring-opacity-10 gradient element-to-rotate"
+              aria-label="Submit"
+              title="Submit"
+              style={{ backgroundColor: 'red', marginBottom: '8px', marginLeft: '8px' }}
+              disabled={submitLoading}
+            >
+              DELETE
+            </button>
+          </div>
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["NO", "TANGGAL", "ID MEMBER", "PENGIRIM", "PESAN", 'CENTERID', 'TIPE'].map((el) => (
+                {["NO", "TANGGAL", "ID MEMBER", "NO PONSEL", "PESAN", 'TIPE'].map((el) => (
                   <th
                     key={el}
                     className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -133,64 +131,52 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {/* {users.data?.map((user, index) => {
-                const className = `py-3 px-5 ${index === users.data.length - 1
-                  ? ""
-                  : "border-b border-blue-gray-50"
-                  }`;
-                return ( */}
-                  <tr>
-                    <td className='border-b border-blue-gray-50'>
-                      <div className="flex items-center gap-4">
-                        {/* <Avatar src={`http://192.168.127.112:2887${user.foto_formal}`} alt={user.nama_lengkap} size="sm" variant="rounded" /> */}
-                        <div>
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-semibold"
-                          >
-                            1
-                          </Typography>
-                          {/* <Typography className="text-xs font-normal text-blue-gray-500">
-                         ASDASD
-                          </Typography> */}
-                        </div>
-                      </div>
-                    </td>
-                    <td className='border-b border-blue-gray-50'>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                        SFSDFSDFSD
-                      </Typography>
-                      {/* <Typography className="text-xs font-normal text-blue-gray-500">
+              <tr>
+                <td className='border-b border-blue-gray-50'>
+                  <div className="flex items-center gap-4">
+                    <input
+                      id="checkbox-table-search-1"
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-1"
+                    />
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-semibold"
+                    >
+                      1
+                    </Typography>
+                  </div>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SFSDFSDFSD
+                  </Typography>
+                  {/* <Typography className="text-xs font-normal text-blue-gray-500">
                           {job[1]}
                         </Typography> */}
-                    </td>
-                    <td className='border-b border-blue-gray-50'>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                       SDFSFDSDFSDF
-                      </Typography>
-                    </td>
-                    <td className='border-b border-blue-gray-50'>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                       SDFSFDSDFSDF
-                      </Typography>
-                    </td>
-                    <td className='border-b border-blue-gray-50'>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                       SDFSFDSDFSDF
-                      </Typography>
-                    </td>
-                    <td className='border-b border-blue-gray-50'>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                       SDFSFDSDFSDF
-                      </Typography>
-                    </td>
-                    <td className='border-b border-blue-gray-50'>
-                      <Typography className="text-xs font-semibold text-blue-gray-600">
-                       SDFSFDSDFSDF
-                      </Typography>
-                    </td>
-                    {/* <td className={className}>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                {/* <td className={className}>
                       <Typography className="text-xs font-semibold text-blue-gray-600">
                         {user.tanggal_lahir}
                       </Typography>
@@ -256,7 +242,7 @@ export function Tables() {
                         View
                       </a>
                     </td> */}
-                    {/* <td className={className}>
+                {/* <td className={className}>
                         <Chip
                           variant="gradient"
                           color={online ? "green" : "blue-gray"}
@@ -278,8 +264,146 @@ export function Tables() {
                           Edit
                         </Typography>
                       </td> */}
-                  </tr>
-                {/* );
+              </tr>
+              <tr>
+                <td className='border-b border-blue-gray-50'>
+                  <div className="flex items-center gap-4">
+                    <input
+                      id="checkbox-table-search-1"
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-1"
+                    />
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-semibold"
+                    >
+                      1
+                    </Typography>
+                  </div>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SFSDFSDFSD
+                  </Typography>
+                  {/* <Typography className="text-xs font-normal text-blue-gray-500">
+                          {job[1]}
+                        </Typography> */}
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td className='border-b border-blue-gray-50'>
+                  <div className="flex items-center gap-4">
+                    <input
+                      id="checkbox-table-search-1"
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-1"
+                    />
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-semibold"
+                    >
+                      1
+                    </Typography>
+                  </div>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SFSDFSDFSD
+                  </Typography>
+                  {/* <Typography className="text-xs font-normal text-blue-gray-500">
+                          {job[1]}
+                        </Typography> */}
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td className='border-b border-blue-gray-50'>
+                  <div className="flex items-center gap-4">
+                    <input
+                      id="checkbox-table-search-1"
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-1"
+                    />
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-semibold"
+                    >
+                      1
+                    </Typography>
+                  </div>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SFSDFSDFSD
+                  </Typography>
+                  {/* <Typography className="text-xs font-normal text-blue-gray-500">
+                          {job[1]}
+                        </Typography> */}
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+                <td className='border-b border-blue-gray-50'>
+                  <Typography className="text-xs font-semibold text-blue-gray-600">
+                    SDFSFDSDFSDF
+                  </Typography>
+                </td>
+              </tr>
+              {/* );
               }
               )} */}
             </tbody>
@@ -399,4 +523,4 @@ export function Tables() {
   );
 }
 
-export default Tables;
+export default TablesAntri;

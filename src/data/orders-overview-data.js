@@ -9,39 +9,39 @@ import {
 
 export const ordersOverviewData = [
   {
-    icon: BellIcon,
+    icon: CreditCardIcon,
     color: "text-blue-gray-300",
-    title: "$2400, Design changes",
+    title: "Telkomsel",
     description: "22 DEC 7:20 PM",
   },
   {
-    icon: PlusCircleIcon,
+    icon: CreditCardIcon,
     color: "text-blue-gray-300",
-    title: "New order #1832412",
+    title: "Indosat",
     description: "21 DEC 11 PM",
   },
   {
-    icon: ShoppingCartIcon,
+    icon: CreditCardIcon,
     color: "text-blue-gray-300",
-    title: "Server payments for April",
+    title: "Three",
     description: "21 DEC 9:34 PM",
   },
   {
     icon: CreditCardIcon,
     color: "text-blue-gray-300",
-    title: "New card added for order #4395133",
+    title: "Smart",
     description: "20 DEC 2:20 AM",
   },
   {
-    icon: LockOpenIcon,
+    icon: ShoppingCartIcon,
     color: "text-blue-gray-300",
-    title: "Unlock packages for development",
+    title: "E-commerce",
     description: "18 DEC 4:54 AM",
   },
   {
-    icon: BanknotesIcon,
+    icon: PlusCircleIcon,
     color: "text-blue-gray-300",
-    title: "New order #9583120",
+    title: "PLN",
     description: "17 DEC",
   },
 ];

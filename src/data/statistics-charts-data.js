@@ -1,4 +1,5 @@
 import { chartsConfig } from "@/configs";
+// import ApexCharts from 'apexcharts';
 
 const websiteViewsChart = {
   type: "bar",
@@ -26,103 +27,51 @@ const websiteViewsChart = {
 };
 
 const dailySalesChart = {
-  type: "line",
-  height: 220,
-  series: [
-    {
-      name: "Sales",
-      data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-    },
-  ],
+  type: 'donut',
+  series: [500, 200, 350], // Ubah series sesuai dengan data yang sesuai untuk grafik donut
   options: {
-    ...chartsConfig,
-    colors: ["#0288d1"],
-    stroke: {
-      lineCap: "round",
+    maintainAspectRatio: false,
+    chart: {
+      height: 3000, // Ubah tinggi sesuai kebutuhan Anda di sini
     },
-    markers: {
-      size: 5,
-    },
-    xaxis: {
-      ...chartsConfig.xaxis,
-      categories: [
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-    },
+    colors: ['#0288d1', '#388e3c', '#f57c00'], // Ubah warna sesuai dengan kebutuhan
+    labels: ['XL', 'Indosat', 'Telkomsel'], // Ubah label sesuai dengan kebutuhan
   },
 };
 
-const completedTaskChart = {
-  type: "line",
-  height: 220,
-  series: [
-    {
-      name: "Sales",
-      data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-    },
-  ],
-  options: {
-    ...chartsConfig,
-    colors: ["#388e3c"],
-    stroke: {
-      lineCap: "round",
-    },
-    markers: {
-      size: 5,
-    },
-    xaxis: {
-      ...chartsConfig.xaxis,
-      categories: [
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-    },
-  },
-};
 const completedTasksChart = {
-  ...completedTaskChart,
-  series: [
-    {
-      name: "Tasks",
-      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-    },
-  ],
+  type: 'donut',
+  height: 220,
+  series: [50, 20],
+  options: {
+    maintainAspectRatio: false,
+    colors: ['#388e3c', '#ff5722'],
+    labels: [
+      'Regular',
+      'Non Regular',
+    ],
+  },
 };
 
 export const statisticsChartsData = [
   {
     color: "white",
-    title: "Website View",
-    description: "Last Campaign Performance",
+    title: "Penjualan",
+    description: "Penjualan",
     footer: "campaign sent 2 days ago",
     chart: websiteViewsChart,
   },
   {
     color: "white",
-    title: "Daily Sales",
-    description: "15% increase in today sales",
+    title: "Provider",
+    description: "Provider",
     footer: "updated 4 min ago",
     chart: dailySalesChart,
   },
   {
     color: "white",
-    title: "Completed Tasks",
-    description: "Last Campaign Performance",
+    title: "Produk Terlaris",
+    description: "Produk Terlaris",
     footer: "just updated",
     chart: completedTasksChart,
   },
